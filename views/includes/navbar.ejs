@@ -1,35 +1,70 @@
-<nav class="navbar navbar-expand-md bg-body-Light border-bottom sticky-top">
+<nav class="navbar navbar-expand-md border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/listing"><i class="fa-solid fa-compass"></i></a>
-    <button class="navbar-toggler" 
-    type="button" 
-    data-bs-toggle="collapse" 
-    data-bs-target="#navbarNavAltMarkup" >
+
+    <!-- Logo -->
+    <a class="navbar-brand" href="/listing">
+      <i class="fa-solid fa-compass"></i>
+      <span class="brand-name">Wanderlust</span>
+    </a>
+
+    <!-- Mobile Toggle -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 
-      <div class="navbar-nav">
-        <a class="nav-link" href="/listing"><b>Explore</b></a>
-      </div>
-
-      <div class="search navbar-nav ms-auto">
+      <!-- Search -->
+      <div class="search mx-auto">
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button class="btn btn-outline-danger" type="submit">Search</button>
+          <input
+            class="form-control"
+            type="search"
+            placeholder="Search destinations"
+            aria-label="Search"
+          >
+
+          <button class="btn btn-danger" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
         </form>
       </div>
-      
-      <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listing/new"><b>Become a host</b></a>
+
+      <!-- Right Navigation -->
+      <div class="navbar-nav ms-auto align-items-md-center">
+
+        <a class="nav-link" href="/listing/new">
+          <i class="fa-solid fa-house"></i>
+          Become a host
+        </a>
+
         <% if (!currUser) { %>
-          <a class="nav-link" href="/signup">SignUp</a>
-          <a class="nav-link" href="/login">LogIn</a>
+
+          <a class="nav-link" href="/signup">Sign Up</a>
+
+          <a href="/login" class="btn login-btn">
+            Log In
+          </a>
+
+        <% } else { %>
+
+          <a class="nav-link logout-link" href="/logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Log Out
+          </a>
+
         <% } %>
-        <% if(currUser) { %>
-          <a class="nav-link" href="/logout">LogOut</a>
-        <% } %>
+
       </div>
+
     </div>
   </div>
 </nav>

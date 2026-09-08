@@ -1,6 +1,24 @@
 <% layout("layouts/boilerplates") -%>
-<div class="row mt-3">
-    <div class="alert alert-danger col-6 offset-3" role="alert">
-        <h3 class="alert-heading"><%= err.message %></h3>
+
+<div class="error-page">
+
+    <div class="error-container">
+
+        <div class="error-icon">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+
+        <h2>Oops! Something went wrong</h2>
+
+        <p>
+            <%= err.message %>
+        </p>
+
+        <a href="/listing" class="btn error-home-btn">
+            <i class="fa-solid fa-house"></i>
+            Back to Explore
+        </a>
+
     </div>
+
 </div>

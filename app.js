@@ -1,7 +1,6 @@
 const dns = require("dns");
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
-
 require("dotenv").config();
 const express = require("express");
 const app = express();
@@ -102,6 +101,18 @@ app.use("/listing", listingRouter);
 app.use("/listing/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
+app.get("/", (req, res) => {
+  res.redirect("/listing");
+});
+
+app.get("/privacy", (req, res) => {
+    res.render("privacy.ejs");
+});
+
+app.get("/terms", (req, res) => {
+    res.render("terms.ejs");
+});
+
 
 // ================= ERROR =================
 app.get("/favicon.ico", (req, res) => {
@@ -121,6 +132,7 @@ app.use((err, req, res, next) => {
 
     res.status(statusCode).render("error.ejs", { err });
 });
+
 
 
 // ================= SERVER =================

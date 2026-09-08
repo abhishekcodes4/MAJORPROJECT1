@@ -1,26 +1,113 @@
-<% layout("layouts/boilerplates") -%> 
-<div class="row mt-4 mb-5">
-    <div class="col-6 offset-3">
-        <h2>Sign Up for Wanderlust</h2>
-        <form method="post" action="/signup" novalidate class="needs-validation">
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input name="username" id="username" type="text" class="form-control" required>
-                <div class="valid-feedback">Valid Username</div>
-                <div class="invalid-feedback">Please enter a valid username.</div>
-            </div>
-             <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input name="email" id="email" type="email" class="form-control" required>
-                <div class="valid-feedback">Looks good</div>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input name="password" id="password" type="password" class="form-control" required>
-                <div class="valid-feedback">Looks good</div>
-            </div>
-            <button class="btn btn-dark add-btn">Register</button><br><br>
-        </form>
-    </div> 
-</div> 
+<% layout("layouts/boilerplates") -%>
 
+<div class="auth-page">
+
+    <div class="auth-container">
+
+        <div class="auth-header">
+            <i class="fa-solid fa-compass auth-icon"></i>
+
+            <h2>Create Your Account</h2>
+
+            <p>Join Wanderlust and start exploring amazing places.</p>
+        </div>
+
+
+        <form
+            method="POST"
+            action="/signup"
+            novalidate
+            class="needs-validation auth-form"
+        >
+
+            <!-- Username -->
+            <div class="form-group">
+
+                <label for="username" class="form-label">
+                    Username
+                </label>
+
+                <input
+                    name="username"
+                    id="username"
+                    type="text"
+                    class="form-control"
+                    placeholder="Choose a username"
+                    required
+                >
+
+                <div class="invalid-feedback">
+                    Please enter a valid username.
+                </div>
+
+            </div>
+
+
+            <!-- Email -->
+            <div class="form-group">
+
+                <label for="email" class="form-label">
+                    Email Address
+                </label>
+
+                <input
+                    name="email"
+                    id="email"
+                    type="email"
+                    class="form-control"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <div class="invalid-feedback">
+                    Please enter a valid email.
+                </div>
+
+            </div>
+
+
+            <!-- Password -->
+            <div class="form-group">
+
+                <label for="password" class="form-label">
+                    Password
+                </label>
+
+                <input
+                    name="password"
+                    id="password"
+                    type="password"
+                    class="form-control"
+                    placeholder="Create a password"
+                    required
+                >
+
+                <div class="invalid-feedback">
+                    Please enter a password.
+                </div>
+
+            </div>
+
+
+            <!-- Submit -->
+            <button
+                type="submit"
+                class="btn auth-btn"
+            >
+                <i class="fa-solid fa-user-plus"></i>
+                Create Account
+            </button>
+
+        </form>
+
+
+        <div class="auth-footer">
+            <p>
+                Already have an account?
+                <a href="/login">Log In</a>
+            </p>
+        </div>
+
+    </div>
+
+</div>

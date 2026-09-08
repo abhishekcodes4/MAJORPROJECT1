@@ -1,123 +1,174 @@
 <% layout("layouts/boilerplates") -%>
 
-<style>
-    #filter{
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-    }
+<!-- Filters Section -->
+<div class="filters-wrapper">
 
-    .filter{
-        text-align: center;
-        margin-right: 2rem;
-        margin-top: 1rem;
-        opacity: 0.7;
-    }
+    <div id="filter">
 
-    .filter:hover{
-        opacity: 1;
-        cursor: pointer;
-    }
+        <div class="filter">
+            <div><i class="fa-solid fa-fire"></i></div>
+            <p>Trending</p>
+        </div>
 
-    .filter p{
-        font-size: .6rem;
-    }
+        <div class="filter">
+            <div><i class="fa-solid fa-house-circle-check"></i></div>
+            <p>Rooms</p>
+        </div>
 
-    .tex-toggle{
-        border: 1px solid black;
-        border-radius: 1rem;
-        height: 3rem;
-        padding: 1rem;
-        margin-left: 5rem;
-        display: flex;
-        align-items: center;
-    }
-    .tax-info{
-        display: none;
-    }
-</style>
+        <div class="filter">
+            <div><i class="fa-solid fa-cow"></i></div>
+            <p>Farms</p>
+        </div>
 
-<div id="filter">
-    <div class="filter">
-        <div><i class="fa-solid fa-fire"></i></div>
-        <p>Trending </p>
+        <div class="filter">
+            <div><i class="fa-solid fa-city"></i></div>
+            <p>Iconic cities</p>
+        </div>
+
+        <div class="filter">
+            <div><i class="fa-solid fa-umbrella-beach"></i></div>
+            <p>Beach</p>
+        </div>
+
+        <div class="filter">
+            <div><i class="fa-solid fa-cable-car"></i></div>
+            <p>Cabins</p>
+        </div>
+
+        <div class="filter">
+            <div><i class="fa-solid fa-mountain-city"></i></div>
+            <p>Mountains</p>
+        </div>
+
+        <div class="filter">
+            <div><i class="fa-solid fa-person-swimming"></i></div>
+            <p>Amazing pool</p>
+        </div>
+
+        <div class="filter">
+            <div><i class="fa-brands fa-fort-awesome"></i></div>
+            <p>Castles</p>
+        </div>
+
+        <div class="filter">
+            <div><i class="fa-solid fa-snowflake"></i></div>
+            <p>Arctic</p>
+        </div>
+
+        <div class="filter">
+            <div><i class="fa-solid fa-tents"></i></div>
+            <p>Camping</p>
+        </div>
+
     </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-house-circle-check"></i></div>
-        <p>Rooms </p>
-    </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-cow"></i></div>
-        <p>Farms </p>
-    </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-city"></i></div>
-        <p>Iconic cities </p>
-    </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-umbrella-beach"></i> </div>
-        <p>Beach</p>
-    </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-cable-car"></i></div>
-        <p>Cabins</p>
-    </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-mountain-city"></i></div>
-        <p>Mountains</p>
-    </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-person-swimming"></i></div>
-        <p>Amazing pool</p>
-    </div>
-    <div class="filter">
-        <div><i class="fa-brands fa-fort-awesome"></i></div>
-        <p>Castles</p>
-    </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-snowflake"></i></div>
-        <p>Arctic</p>
-    </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-tents"></i></div>
-        <p>Camping</p>
-    </div>
+
+    <!-- Tax Toggle -->
     <div class="tex-toggle">
         <div class="form-check form-switch form-check-reverse">
-            <input class="form-check-input" type="checkbox" id="switchCheckReverse">
-            <label class="form-check-label" for="switchCheckReverse">Display total after taxes</label>
+            <input
+                class="form-check-input"
+                type="checkbox"
+                id="switchCheckReverse"
+            >
+
+            <label
+                class="form-check-label"
+                for="switchCheckReverse"
+            >
+                Display total after taxes
+            </label>
         </div>
     </div>
+
 </div>
-<!-- <h3 class="mt-3">All Listings</h3> -->
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
-    <% for(let listing of allListings){ %>
-        <a href="/listing/<%= listing._id%>" class="listing-link">
-            <div class="card col listing-card">
-                <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem;">
-                <div class="card-img-overlay"></div>
-                <div class="card-body">
-                    <p class="card-text"> <b><%= listing.title %></b><br>
-                        &#8377; <%= listing.price.toLocaleString("en-In") %> /night
-                        <i class="tax-info"> &nbsp; &nbsp; +18% GST</i>
-                    </p>
-                </div>
+
+
+<!-- Listings Section -->
+
+<div class="listings-container">
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+        <% for(let listing of allListings){ %>
+
+            <div class="col">
+
+                <a
+                    href="/listing/<%= listing._id %>"
+                    class="listing-link"
+                >
+
+                    <div class="card listing-card">
+
+                        <div class="listing-img-container">
+
+                            <img
+                                src="<%= listing.image.url %>"
+                                class="card-img-top listing-img"
+                                alt="<%= listing.title %>"
+                            >
+
+                            <div class="card-img-overlay"></div>
+
+                        </div>
+
+                        <div class="card-body listing-card-body">
+
+                            <h5 class="listing-title">
+                                <%= listing.title %>
+                            </h5>
+
+                            <p class="listing-location">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <%= listing.location %>,
+                                <%= listing.country %>
+                            </p>
+
+                            <p class="listing-price">
+
+                                &#8377;
+                                <%= listing.price.toLocaleString("en-In") %>
+
+                                <span>/ night</span>
+
+                                <i class="tax-info">
+                                    +18% GST
+                                </i>
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
             </div>
-        </a>
-    <% } %>
+
+        <% } %>
+
+    </div>
+
 </div>
 
 
 <script>
-    let taxSwitch = document.getElementById("switchCheckReverse");
-    taxSwitch.addEventListener("click" , ()=>{
-        let taxInfo = document.getElementsByClassName("tax-info");
-        for(info of taxInfo){
-            if(info.style.display != "inline"){
-                info.style.display = "inline";
-            }else{
-                info.style.display = "none";
-            }
+
+    const taxSwitch =
+        document.getElementById("switchCheckReverse");
+
+    taxSwitch.addEventListener("change", () => {
+
+        const taxInfo =
+            document.getElementsByClassName("tax-info");
+
+        for (const info of taxInfo) {
+
+            info.style.display =
+                taxSwitch.checked ? "inline" : "none";
+
         }
-    })
+
+    });
+
 </script>
